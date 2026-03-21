@@ -1,0 +1,72 @@
+/* ── Design tokens ─────────────────────────────────────── */
+:root {
+  --navy:    #1a3a5c;
+  --blue:    #2d6a9f;
+  --copper:  #e8701a;
+  --white:   #f5f5f5;
+  --muted:   rgba(245,245,245,0.55);
+  --border:  rgba(255,255,255,0.1);
+
+  --font: 'Montserrat', sans-serif;
+  --max-width: 1320px;
+  --section-pad: clamp(4rem, 8vw, 8rem);
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+h1,h2,h3,h4 {
+  font-family: var(--font);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+/* ── Utilities ─────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.section { padding-block: var(--section-pad); }
+
+.copper-line {
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: var(--copper);
+  margin-block: 1.25rem;
+}
+
+.eyebrow {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--copper); border-radius: 2px; }
+
+::selection { background: var(--copper); color: #fff; }

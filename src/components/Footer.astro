@@ -1,0 +1,69 @@
+---
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__logos">
+      <img
+        src="/images/logo-el-abra.png"
+        alt="Minera El Abra"
+        class="footer__logo"
+        loading="lazy"
+      />
+      <span class="footer__sep">·</span>
+      <span class="footer__partner">Freeport-McMoRan</span>
+    </div>
+    <p class="footer__copy">
+      © 2024 Minera El Abra. 30 años en el norte de Chile.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #050f1c;
+    border-top: 1px solid var(--border);
+    padding-block: 3rem;
+  }
+
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer__logos {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .footer__logo {
+    height: 36px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+  }
+
+  .footer__sep {
+    color: var(--border);
+    font-size: 1.2rem;
+  }
+
+  .footer__partner {
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.4);
+  }
+
+  .footer__copy {
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: rgba(245,245,245,0.3);
+  }
+</style>

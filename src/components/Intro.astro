@@ -1,0 +1,84 @@
+---
+---
+
+<section class="intro section" id="intro">
+  <div class="container intro__grid">
+    <div class="intro__aside">
+      <p class="eyebrow">El Hito</p>
+      <span class="copper-line"></span>
+      <p class="intro__year">1994<br />—<br />2024</p>
+    </div>
+    <div class="intro__body">
+      <h2 class="intro__title">
+        Tres décadas de historia minera en el desierto de Atacama
+      </h2>
+      <p class="intro__text">
+        Minera El Abra cumple 30 años de operación ininterrumpida en el corazón
+        del norte de Chile, consolidándose como uno de los proyectos cupríferos
+        más relevantes del país. A lo largo de estas tres décadas, ha generado
+        miles de empleos directos e indirectos, contribuido al desarrollo de
+        la Región de Antofagasta, y demostrado que la minería responsable puede
+        convivir con el cuidado del entorno y las comunidades.
+      </p>
+      <p class="intro__text">
+        Este hito fue conmemorado con una producción audiovisual integral
+        a cargo de Morten Andersen, capturando la magnitud de la faena,
+        el trabajo de su gente y el legado de tres décadas de compromiso
+        con Chile y Freeport-McMoRan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    background: #0f2238;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .intro__grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .intro__aside {
+    padding-top: 0.25rem;
+  }
+
+  .intro__year {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--copper);
+    line-height: 1.8;
+    margin-top: 0.5rem;
+  }
+
+  .intro__title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .intro__text {
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    font-weight: 300;
+    color: rgba(245,245,245,0.7);
+    line-height: 1.85;
+    max-width: 64ch;
+    margin-bottom: 1.5rem;
+  }
+  .intro__text:last-child { margin-bottom: 0; }
+
+  @media (max-width: 780px) {
+    .intro__grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

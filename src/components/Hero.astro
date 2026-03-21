@@ -1,0 +1,130 @@
+---
+---
+
+<section class="hero">
+  <div class="hero__img-wrap">
+    <img
+      class="hero__img"
+      src="/images/hero.jpg"
+      alt="Vista aérea de Minera El Abra"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__content container">
+    <img
+      class="hero__logo"
+      src="/images/logo-el-abra.png"
+      alt="Logo Minera El Abra"
+      loading="eager"
+    />
+    <h1 class="hero__title">
+      30 Años Construyendo<br />Chile
+    </h1>
+    <span class="hero__line"></span>
+    <p class="hero__sub">Minera El Abra · Freeport-McMoRan · 1994–2024</p>
+  </div>
+
+  <a href="#intro" class="hero__scroll" aria-label="Continuar">
+    <span class="hero__scroll-line"></span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100svh;
+    min-height: 620px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero__img-wrap {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10, 22, 40, 1)    0%,
+      rgba(26, 58, 92, 0.6)  45%,
+      rgba(10, 22, 40, 0.25) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 6rem;
+  }
+
+  .hero__logo {
+    width: auto;
+    height: 56px;
+    margin-bottom: 2rem;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1.05;
+  }
+
+  .hero__line {
+    display: block;
+    width: 3rem;
+    height: 3px;
+    background: var(--copper);
+    margin-block: 1.5rem;
+  }
+
+  .hero__sub {
+    font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.6);
+  }
+
+  /* Scroll indicator */
+  .hero__scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .hero__scroll:hover { opacity: 0.9; }
+
+  .hero__scroll-line {
+    display: block;
+    width: 1px;
+    height: 3.5rem;
+    background: linear-gradient(to bottom, transparent, var(--copper));
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.5) translateY(-1rem); }
+    50%       { opacity: 1;   transform: scaleY(1)   translateY(0); }
+  }
+</style>

@@ -1,0 +1,53 @@
+---
+---
+
+<section class="video-main section" id="video">
+  <div class="container">
+    <p class="eyebrow">Documental</p>
+    <h2 class="video-main__title">El Film</h2>
+    <span class="copper-line"></span>
+    <div class="video-main__wrap">
+      <iframe
+        class="video-main__iframe"
+        src="https://www.youtube.com/embed/5XvYm4tVm1Q"
+        title="Minera El Abra — 30 Años"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .video-main {
+    background: var(--navy);
+  }
+
+  .video-main__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    letter-spacing: 0.04em;
+  }
+
+  .video-main__wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: #000;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .video-main__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+</style>

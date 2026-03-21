@@ -1,0 +1,259 @@
+---
+const capsules = [
+  { id: 'rHQ_qKRw1pU', label: 'Cápsula 1' },
+  { id: 'D1XcgPKHK1Q', label: 'Cápsula 2' },
+  { id: 'UBd5RgciyXQ', label: 'Cápsula 3' },
+  { id: 'eLT9BwgFB2Q', label: 'Cápsula 4' },
+  { id: 'j8Vjv_nbhoQ', label: 'Cápsula 5' },
+  { id: 'IPSqUpeeWGM', label: 'Cápsula 6' },
+];
+---
+
+<section class="capsules section" id="capsulas">
+  <div class="container">
+    <p class="eyebrow">Contenido Corto</p>
+    <h2 class="capsules__title">Cápsulas</h2>
+    <span class="copper-line"></span>
+  </div>
+
+  <div class="capsules__grid">
+    {capsules.map((cap) => (
+      <button
+        class="cap-card"
+        data-video-id={cap.id}
+        aria-label={`Reproducir ${cap.label}`}
+      >
+        <div class="cap-card__thumb-wrap">
+          <img
+            class="cap-card__thumb"
+            src={`https://img.youtube.com/vi/${cap.id}/maxresdefault.jpg`}
+            alt={cap.label}
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="cap-card__overlay"></div>
+        </div>
+        <div class="cap-card__play">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </div>
+        <p class="cap-card__label">{cap.label}</p>
+      </button>
+    ))}
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="cap-modal" role="dialog" aria-modal="true" aria-label="Reproducir cápsula" hidden>
+  <div class="modal__backdrop" id="cap-backdrop"></div>
+  <div class="modal__box">
+    <button class="modal__close" id="cap-close" aria-label="Cerrar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="modal__video" id="cap-video"></div>
+  </div>
+</div>
+
+<script>
+  const modal    = document.getElementById('cap-modal')!;
+  const backdrop = document.getElementById('cap-backdrop')!;
+  const closeBtn = document.getElementById('cap-close')!;
+  const videoDiv = document.getElementById('cap-video')!;
+
+  function open(id: string) {
+    videoDiv.innerHTML = `<iframe
+      src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+      title="Cápsula"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block;"
+    ></iframe>`;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    modal.hidden = true;
+    videoDiv.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.cap-card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.videoId;
+      if (id) open(id);
+    });
+  });
+
+  backdrop.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) close(); });
+</script>
+
+<style>
+  .capsules {
+    background: var(--navy);
+    border-top: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+
+  .capsules__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    letter-spacing: 0.04em;
+  }
+
+  .capsules__grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  /* ── Card ── */
+  .cap-card {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .cap-card__thumb-wrap { position: absolute; inset: 0; }
+
+  .cap-card__thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.65) saturate(0.75);
+    transition: filter 0.5s ease, transform 0.5s ease;
+  }
+
+  .cap-card:hover .cap-card__thumb {
+    filter: brightness(0.45) saturate(0.6);
+    transform: scale(1.04);
+  }
+
+  .cap-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,22,40,0.8) 0%, transparent 55%);
+  }
+
+  .cap-card__play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .cap-card__play svg {
+    width: 52px;
+    height: 52px;
+    background: var(--copper);
+    border-radius: 50%;
+    padding: 16px 13px 16px 17px;
+    color: #fff;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+
+  .cap-card:hover .cap-card__play svg {
+    transform: scale(1.12);
+    background: #ff8a2e;
+  }
+
+  .cap-card__label {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.5);
+    z-index: 1;
+    transition: color 0.25s;
+  }
+
+  .cap-card:hover .cap-card__label { color: rgba(245,245,245,0.85); }
+
+  /* ── Modal ── */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .modal[hidden] { display: none; }
+
+  .modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 15, 28, 0.94);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+
+  .modal__box {
+    position: relative;
+    z-index: 1;
+    width: min(960px, calc(100vw - 4rem));
+    background: #000;
+  }
+
+  .modal__close {
+    position: absolute;
+    top: -2.75rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: rgba(245,245,245,0.65);
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 0;
+    transition: color 0.2s;
+  }
+  .modal__close:hover { color: var(--copper); }
+
+  .modal__video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: #000;
+    overflow: hidden;
+  }
+
+  /* :global necesario: iframe inyectado por JS no tiene scope attribute */
+  .modal__video :global(iframe) {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .capsules__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .capsules__grid { grid-template-columns: 1fr; }
+    .modal { padding: 1rem; }
+    .modal__box { width: calc(100vw - 2rem); }
+  }
+</style>

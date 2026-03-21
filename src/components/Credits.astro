@@ -1,0 +1,65 @@
+---
+---
+
+<section class="credits section">
+  <div class="container credits__inner">
+    <div class="credits__block">
+      <p class="eyebrow">Producción Audiovisual</p>
+      <span class="copper-line"></span>
+      <p class="credits__name">Morten Andersen</p>
+      <a href="https://mortenphoto.com" class="credits__link" target="_blank" rel="noopener">
+        mortenphoto.com ↗
+      </a>
+    </div>
+    <div class="credits__block">
+      <p class="eyebrow">Dirección · Fotografía · Edición</p>
+      <span class="copper-line"></span>
+      <p class="credits__desc">
+        Producción audiovisual integral — dirección,<br />
+        fotografía, cinematografía y edición final.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .credits {
+    background: #0a1e35;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .credits__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .credits__name {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .credits__link {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--copper);
+    transition: opacity 0.2s;
+  }
+  .credits__link:hover { opacity: 0.75; }
+
+  .credits__desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(245,245,245,0.55);
+    line-height: 1.85;
+  }
+
+  @media (max-width: 640px) {
+    .credits__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+</style>

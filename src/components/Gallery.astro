@@ -1,0 +1,92 @@
+---
+import { readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+
+const dir = join(process.cwd(), 'public/images/fotos');
+const allFiles = await readdir(dir).catch(() => [] as string[]);
+const images = allFiles
+  .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
+  .sort();
+---
+
+<section class="gallery section" id="galeria">
+  <div class="container">
+    <p class="eyebrow">Fotografía</p>
+    <h2 class="gallery__title">La Faena</h2>
+    <span class="copper-line"></span>
+  </div>
+
+  {images.length > 0 ? (
+    <div class="gallery__grid">
+      {images.map((filename, i) => (
+        <div class="gallery__item">
+          <img
+            src={`/images/fotos/${filename}`}
+            alt={`Minera El Abra — fotografía ${i + 1}`}
+            loading="lazy"
+            decoding="async"
+            class="gallery__img"
+          />
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="container">
+      <div class="gallery__empty">Fotografías próximamente.</div>
+    </div>
+  )}
+</section>
+
+<style>
+  .gallery {
+    background: #0f2238;
+    border-top: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+
+  .gallery__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    letter-spacing: 0.04em;
+  }
+
+  /* Masonry via CSS columns */
+  .gallery__grid {
+    margin-top: 3rem;
+    columns: 3;
+    column-gap: 3px;
+  }
+
+  .gallery__item {
+    break-inside: avoid;
+    margin-bottom: 3px;
+    overflow: hidden;
+    display: block;
+  }
+
+  .gallery__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: saturate(0.85) brightness(0.95);
+    transition: filter 0.5s ease, transform 0.5s ease;
+  }
+
+  .gallery__item:hover .gallery__img {
+    filter: saturate(1.1) brightness(1.05);
+    transform: scale(1.02);
+  }
+
+  .gallery__empty {
+    padding: 4rem 2rem;
+    text-align: center;
+    border: 1px dashed var(--border);
+    color: rgba(245,245,245,0.3);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 900px) { .gallery__grid { columns: 2; } }
+  @media (max-width: 560px) { .gallery__grid { columns: 1; } }
+</style>
