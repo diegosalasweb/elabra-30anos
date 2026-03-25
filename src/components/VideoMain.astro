@@ -1,16 +1,37 @@
 ---
 ---
 
+<!-- Video 1 -->
 <section class="video-main section" id="video">
   <div class="container">
     <p class="eyebrow">Documental</p>
-    <h2 class="video-main__title">El Film</h2>
+    <h2 class="video-main__title">Documental. 30 años Minera El Abra</h2>
     <span class="copper-line"></span>
     <div class="video-main__wrap">
       <iframe
         class="video-main__iframe"
         src="https://www.youtube.com/embed/5XvYm4tVm1Q"
-        title="Minera El Abra — 30 Años"
+        title="Documental. 30 años Minera El Abra"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Video 2 -->
+<section class="video-main video-main--alt section" id="video2">
+  <div class="container">
+    <p class="eyebrow">Video Corporativo</p>
+    <h2 class="video-main__title">Video Corporativo. El futuro de Minera El Abra</h2>
+    <span class="copper-line"></span>
+    <div class="video-main__wrap">
+      <iframe
+        class="video-main__iframe"
+        src="https://www.youtube.com/embed/1n2EM_KhZt0"
+        title="Video Corporativo. El futuro de Minera El Abra"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
@@ -25,10 +46,16 @@
     background: var(--navy);
   }
 
+  .video-main--alt {
+    background: #0f2238;
+    border-top: 1px solid var(--border);
+  }
+
   .video-main__title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.5rem, 3.5vw, 2.75rem);
     color: var(--white);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
+    font-weight: 300;
   }
 
   .video-main__wrap {
